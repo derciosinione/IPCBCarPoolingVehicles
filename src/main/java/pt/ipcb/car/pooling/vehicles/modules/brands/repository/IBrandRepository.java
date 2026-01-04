@@ -1,12 +1,12 @@
 package pt.ipcb.car.pooling.vehicles.modules.brands.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import pt.ipcb.car.pooling.identity.modules.profile.entities.ProfileEntity;
+import pt.ipcb.car.pooling.vehicles.modules.brands.entities.BrandEntity;
 
 import java.util.Optional;
 import java.util.UUID;
 
-public interface IProfileRepository extends JpaRepository<ProfileEntity, UUID> {
+public interface IBrandRepository extends JpaRepository<BrandEntity, UUID> {
 
-    Optional<ProfileEntity> findByName(String name);
+    Optional<BrandEntity> findByName(String name);
 }

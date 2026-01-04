@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Builder
-public record ProfileResponse(
+public record BrandResponse(
         UUID id,
         String name,
         String description,

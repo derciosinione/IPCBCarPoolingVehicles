@@ -1,4 +1,4 @@
-package pt.ipcb.car.pooling.identity.security;
+package pt.ipcb.car.pooling.vehicles.security;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;

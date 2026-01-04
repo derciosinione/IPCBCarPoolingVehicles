@@ -1,4 +1,4 @@
-package pt.ipcb.car.pooling.identity.exceptions;
+package pt.ipcb.car.pooling.vehicles.exceptions;
 
 import org.springframework.context.MessageSource;
 import org.springframework.http.HttpStatus;

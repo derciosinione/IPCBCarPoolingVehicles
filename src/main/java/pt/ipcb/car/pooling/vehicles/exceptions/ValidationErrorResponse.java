@@ -1,4 +1,4 @@
-package pt.ipcb.car.pooling.identity.exceptions;
+package pt.ipcb.car.pooling.vehicles.exceptions;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

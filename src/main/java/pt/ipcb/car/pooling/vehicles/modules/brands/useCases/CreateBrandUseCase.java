@@ -2,30 +2,30 @@ package pt.ipcb.car.pooling.vehicles.modules.brands.useCases;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import pt.ipcb.car.pooling.identity.exceptions.ResourceAlreadyExistsException;
-import pt.ipcb.car.pooling.identity.modules.profile.contracts.request.CreateProfileRequest;
-import pt.ipcb.car.pooling.identity.modules.profile.contracts.response.ProfileResponse;
-import pt.ipcb.car.pooling.identity.modules.profile.mapper.ProfileMapper;
-import pt.ipcb.car.pooling.identity.modules.profile.repository.IProfileRepository;
+import pt.ipcb.car.pooling.vehicles.exceptions.ResourceAlreadyExistsException;
+import pt.ipcb.car.pooling.vehicles.modules.brands.contracts.request.CreateBrandRequest;
+import pt.ipcb.car.pooling.vehicles.modules.brands.contracts.response.BrandResponse;
+import pt.ipcb.car.pooling.vehicles.modules.brands.mapper.BrandMapper;
+import pt.ipcb.car.pooling.vehicles.modules.brands.repository.IBrandRepository;
 
 @Service
 @RequiredArgsConstructor
-public class CreateProfileUseCase {
+public class CreateBrandUseCase {
 
-    private final IProfileRepository repository;
-    private final ProfileMapper profileMapper;
+    private final IBrandRepository repository;
+    private final BrandMapper brandMapper;
 
-    public ProfileResponse execute(CreateProfileRequest request) {
+    public BrandResponse execute(CreateBrandRequest request) {
 
         repository.findByName(request.name())
                 .ifPresent(x -> {
                     throw new ResourceAlreadyExistsException();
                 });
 
-        var profileEntity = profileMapper.toEntity(request);
+        var BrandEntity = brandMapper.toEntity(request);
 
-        var savedProfile = repository.save(profileEntity);
+        var savedBrand = repository.save(BrandEntity);
 
-        return profileMapper.toResponse(savedProfile);
+        return brandMapper.toResponse(savedBrand);
     }
 }

@@ -1,4 +1,4 @@
-package pt.ipcb.car.pooling.identity.config;
+package pt.ipcb.car.pooling.vehicles.config;
 
 import io.swagger.v3.oas.models.Components;
 import io.swagger.v3.oas.models.OpenAPI;
@@ -15,8 +15,8 @@ public class SwaggerConfig {
     public OpenAPI openAPI() {
 
         return new OpenAPI()
-                .info(new Info().title("Car Pooling Identity API")
-                        .description("API Responsible to manage user authentication and user data").version("1.0.0"))
+                .info(new Info().title("Car Pooling Vehicles API")
+                        .description("API Responsible to manage vehicles").version("1.0.0"))
                 .addSecurityItem(new SecurityRequirement().addList("Bearer Authentication"))
                 // .schemaRequirement("jwt_auth", createSecurityScheme());
                 .components(new Components().addSecuritySchemes("Bearer Authentication", createSecurityScheme()));

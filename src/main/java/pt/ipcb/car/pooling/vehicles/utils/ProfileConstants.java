@@ -1,4 +1,4 @@
-package pt.ipcb.car.pooling.identity.utils;
+package pt.ipcb.car.pooling.vehicles.utils;
 
 public class ProfileConstants {
     public static final String PASSENGER = "Passageiro";

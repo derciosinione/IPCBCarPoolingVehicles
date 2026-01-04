@@ -1,43 +1,44 @@
-package pt.ipcb.car.pooling.vehicles.modules.brands.entities;
+package pt.ipcb.car.pooling.vehicles.modules.models.entities;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import pt.ipcb.car.pooling.vehicles.modules.brands.entities.BrandEntity;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Data
 @Builder
-@Entity(name = "Brands")
 @AllArgsConstructor
-public class BrandEntity {
+@NoArgsConstructor
+@Entity(name = "Models")
+public class ModelEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
-    @NotBlank(message = "Name can not be empty or blank")
+    @NotBlank(message = "Name cannot be empty or blank")
     private String name;
 
-    private String description;
-
-    @jakarta.persistence.OneToMany(mappedBy = "brand")
-    private java.util.List<pt.ipcb.car.pooling.vehicles.modules.models.entities.ModelEntity> models;
+    @ManyToOne
+    @JoinColumn(name = "brand_id", nullable = false)
+    private BrandEntity brand;
 
     @CreationTimestamp
     private LocalDateTime createdAt;
 
     @UpdateTimestamp
     private LocalDateTime updatedAt;
-
-    public BrandEntity() {
-    }
 }

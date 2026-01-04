@@ -2,23 +2,23 @@ package pt.ipcb.car.pooling.vehicles.modules.brands.useCases;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import pt.ipcb.car.pooling.identity.exceptions.ResourceNotFoundException;
-import pt.ipcb.car.pooling.identity.modules.profile.contracts.response.ProfileResponse;
-import pt.ipcb.car.pooling.identity.modules.profile.mapper.ProfileMapper;
-import pt.ipcb.car.pooling.identity.modules.profile.repository.IProfileRepository;
+import pt.ipcb.car.pooling.vehicles.exceptions.ResourceNotFoundException;
+import pt.ipcb.car.pooling.vehicles.modules.brands.contracts.response.BrandResponse;
+import pt.ipcb.car.pooling.vehicles.modules.brands.mapper.BrandMapper;
+import pt.ipcb.car.pooling.vehicles.modules.brands.repository.IBrandRepository;
 
 import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
-public class GetProfileByIdUseCase {
-    final IProfileRepository repository;
-    final ProfileMapper profileMapper;
+public class GetBrandByIdUseCase {
+    final IBrandRepository repository;
+    final BrandMapper brandMapper;
 
-    public ProfileResponse execute(UUID id) {
+    public BrandResponse execute(UUID id) {
         var profile = repository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException(String.format("Profile with id %s not found", id)));
 
-        return profileMapper.toResponse(profile);
+        return brandMapper.toResponse(profile);
     }
 }

@@ -1,15 +1,15 @@
 package pt.ipcb.car.pooling.vehicles.modules.brands.mapper;
 
 import org.springframework.stereotype.Component;
-import pt.ipcb.car.pooling.identity.modules.profile.contracts.request.CreateProfileRequest;
-import pt.ipcb.car.pooling.identity.modules.profile.contracts.response.ProfileResponse;
-import pt.ipcb.car.pooling.identity.modules.profile.entities.ProfileEntity;
+import pt.ipcb.car.pooling.vehicles.modules.brands.contracts.request.CreateBrandRequest;
+import pt.ipcb.car.pooling.vehicles.modules.brands.contracts.response.BrandResponse;
+import pt.ipcb.car.pooling.vehicles.modules.brands.entities.BrandEntity;
 
 @Component
-public class ProfileMapper {
+public class BrandMapper {
 
-    public ProfileResponse toResponse(ProfileEntity entity) {
-        return ProfileResponse.builder()
+    public BrandResponse toResponse(BrandEntity entity) {
+        return BrandResponse.builder()
                 .id(entity.getId())
                 .name(entity.getName())
                 .description(entity.getDescription())
@@ -18,8 +18,8 @@ public class ProfileMapper {
                 .build();
     }
 
-    public ProfileEntity toEntity(CreateProfileRequest request) {
-        return ProfileEntity.builder()
+    public BrandEntity toEntity(CreateBrandRequest request) {
+        return BrandEntity.builder()
                 .name(request.name())
                 .description(request.description())
                 .build();

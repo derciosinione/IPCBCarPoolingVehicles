@@ -2,21 +2,21 @@ package pt.ipcb.car.pooling.vehicles.modules.brands.useCases;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import pt.ipcb.car.pooling.identity.modules.profile.contracts.response.ProfileResponse;
-import pt.ipcb.car.pooling.identity.modules.profile.mapper.ProfileMapper;
-import pt.ipcb.car.pooling.identity.modules.profile.repository.IProfileRepository;
+import pt.ipcb.car.pooling.vehicles.modules.brands.contracts.response.BrandResponse;
+import pt.ipcb.car.pooling.vehicles.modules.brands.mapper.BrandMapper;
+import pt.ipcb.car.pooling.vehicles.modules.brands.repository.IBrandRepository;
 
 import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class GetAllProfileUseCase {
-    final IProfileRepository repository;
-    final ProfileMapper profileMapper;
+public class GetAllBrandUseCase {
+    final IBrandRepository repository;
+    final BrandMapper brandMapper;
 
-    public List<ProfileResponse> execute() {
+    public List<BrandResponse> execute() {
         return repository.findAll().stream()
-                .map(profileMapper::toResponse)
+                .map(brandMapper::toResponse)
                 .toList();
     }
 }

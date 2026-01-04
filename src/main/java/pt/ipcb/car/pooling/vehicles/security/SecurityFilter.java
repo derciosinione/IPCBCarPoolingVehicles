@@ -1,4 +1,4 @@
-package pt.ipcb.car.pooling.identity.security;
+package pt.ipcb.car.pooling.vehicles.security;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
