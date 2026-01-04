@@ -17,6 +17,10 @@ import pt.ipcb.car.pooling.vehicles.modules.vehicles.useCases.ListVehiclesUseCas
 
 import java.util.List;
 
+import org.springframework.web.bind.annotation.PathVariable;
+import pt.ipcb.car.pooling.vehicles.modules.vehicles.useCases.ListVehiclesByUserUseCase;
+import java.util.UUID;
+
 @RestController
 @RequestMapping("/api/v1/vehicles")
 @RequiredArgsConstructor
@@ -25,6 +29,7 @@ public class VehicleController {
 
     private final CreateVehicleUseCase createVehicleUseCase;
     private final ListVehiclesUseCase listVehiclesUseCase;
+    private final ListVehiclesByUserUseCase listVehiclesByUserUseCase;
 
     @PostMapping
     @Operation(summary = "Create a new vehicle", description = "Creates a new vehicle linked to a model")
@@ -36,5 +41,11 @@ public class VehicleController {
     @Operation(summary = "List all vehicles", description = "Returns a list of all vehicles")
     public ResponseEntity<List<VehicleResponse>> list() {
         return ResponseEntity.ok(listVehiclesUseCase.execute());
+    }
+
+    @GetMapping("/user/{userId}")
+    @Operation(summary = "List vehicles by user", description = "Returns a list of vehicles owned by a specific user")
+    public ResponseEntity<List<VehicleResponse>> listByUser(@PathVariable UUID userId) {
+        return ResponseEntity.ok(listVehiclesByUserUseCase.execute(userId));
     }
 }
