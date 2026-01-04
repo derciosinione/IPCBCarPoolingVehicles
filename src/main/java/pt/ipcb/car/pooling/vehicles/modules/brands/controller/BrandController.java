@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/brands")
+@RequestMapping("/api/v1/brands")
 @RequiredArgsConstructor
 public class BrandController {
 
@@ -41,7 +41,7 @@ public class BrandController {
         var response = createBrandUseCase.execute(request);
 
         return ResponseEntity
-                .created(URI.create("/brands/" + response.id()))
+                .created(URI.create("/api/v1/brands/" + response.id()))
                 .body(response);
     }
 }

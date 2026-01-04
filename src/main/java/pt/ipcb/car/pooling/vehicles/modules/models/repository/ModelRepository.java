@@ -6,4 +6,5 @@ import pt.ipcb.car.pooling.vehicles.modules.models.entities.ModelEntity;
 import java.util.UUID;
 
 public interface ModelRepository extends JpaRepository<ModelEntity, UUID> {
+    java.util.List<ModelEntity> findByBrandId(UUID brandId);
 }

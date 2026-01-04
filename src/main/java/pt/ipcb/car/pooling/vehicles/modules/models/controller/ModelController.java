@@ -15,7 +15,11 @@ import pt.ipcb.car.pooling.vehicles.modules.models.contracts.response.ModelRespo
 import pt.ipcb.car.pooling.vehicles.modules.models.useCases.CreateModelUseCase;
 import pt.ipcb.car.pooling.vehicles.modules.models.useCases.ListModelsUseCase;
 
+import org.springframework.web.bind.annotation.PathVariable;
+import pt.ipcb.car.pooling.vehicles.modules.models.useCases.ListModelsByBrandUseCase;
+
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/v1/models")
@@ -25,6 +29,7 @@ public class ModelController {
 
     private final CreateModelUseCase createModelUseCase;
     private final ListModelsUseCase listModelsUseCase;
+    private final ListModelsByBrandUseCase listModelsByBrandUseCase;
 
     @PostMapping
     @Operation(summary = "Create a new model", description = "Creates a new vehicle model linked to a brand")
@@ -36,5 +41,11 @@ public class ModelController {
     @Operation(summary = "List all models", description = "Returns a list of all vehicle models")
     public ResponseEntity<List<ModelResponse>> list() {
         return ResponseEntity.ok(listModelsUseCase.execute());
+    }
+
+    @GetMapping("/brand/{brandId}")
+    @Operation(summary = "List models by brand", description = "Returns a list of vehicle models for a specific brand")
+    public ResponseEntity<List<ModelResponse>> listByBrand(@PathVariable UUID brandId) {
+        return ResponseEntity.ok(listModelsByBrandUseCase.execute(brandId));
     }
 }
